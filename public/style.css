@@ -1309,3 +1309,52 @@ h1, h2, h3, h4 {
         align-items: center;
     }
 }
+
+/* Music-specific styles */
+.format-card.music {
+    border-left: 4px solid var(--accent);
+}
+
+.format-card.music::before {
+    background: var(--gradient-secondary);
+}
+
+.music-badge {
+    background: linear-gradient(45deg, var(--accent), var(--primary));
+    color: white;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    margin-left: 10px;
+}
+
+/* Audio focus tab */
+.tab-audio.active {
+    background: linear-gradient(45deg, rgba(255, 0, 255, 0.2), rgba(138, 43, 226, 0.2));
+}
+
+/* Music info section */
+.music-info {
+    background: rgba(255, 0, 255, 0.05);
+    border: 1px solid rgba(255, 0, 255, 0.1);
+    border-radius: var(--radius-lg);
+    padding: 15px;
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.music-info i {
+    font-size: 1.5rem;
+    color: var(--accent);
+}
+
+.music-info p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    }

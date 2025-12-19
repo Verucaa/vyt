@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="id" class="dark-theme">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VYT DOWNLOADER | YouTube Downloader Gen Z</title>
+    <meta name="description" content="Download video YouTube dengan resolusi tinggi & audio MP3 berkualitas. UI modern untuk Gen Z!">
+    <meta name="keywords" content="YouTube downloader, download video, MP3, 4K, 1080p, free download">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22 fill=%22%238a2be2%22>⬇️</text></svg>">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Righteous&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#8a2be2">
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="VYT DOWNLOADER | YouTube Downloader Gen Z">
+    <meta property="og:description" content="Download video YouTube dengan resolusi tinggi & audio MP3 berkualitas">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://vyt-downloader.vercel.app/og-image.png">
+</head>
+<body>
+    <!-- Particle Background -->
+    <div class="particles" id="particles"></div>
+    
+    <!-- Noise Overlay -->
+    <div class="noise-overlay"></div>
+    
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo-container">
+                <div class="logo">
+                    <i class="fas fa-bolt"></i>
+                    <h1>VYT DOWNLOADER</h1>
+                </div>
+                <div class="badge">
+                    <span class="version">v2.0</span>
+                    <span class="status"><i class="fas fa-circle"></i> LIVE</span>
+                </div>
+            </div>
+            <p class="tagline">Download YouTube videos in <span class="gradient-text">style</span> ✨</p>
+            
+            <div class="stats">
+                <div class="stat">
+                    <i class="fas fa-video"></i>
+                    <span>Unlimited</span>
+                    <small>Downloads</small>
+                </div>
+                <div class="stat">
+                    <i class="fas fa-hd"></i>
+                    <span>4K</span>
+                    <small>Quality</small>
+                </div>
+                <div class="stat">
+                    <i class="fas fa-bolt"></i>
+                    <span>Fast</span>
+                    <small>Processing</small>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Input Card -->
+            <div class="card input-card">
+                <div class="card-header">
+                    <h2><i class="fab fa-youtube"></i> YouTube Video URL</h2>
+                    <p class="subtitle">Paste link video YouTube di bawah ini</p>
+                </div>
+                
+                <div class="input-group">
+                    <div class="input-wrapper">
+                        <i class="fas fa-link"></i>
+                        <input 
+                            type="url" 
+                            id="urlInput" 
+                            placeholder="https://youtube.com/watch?v=..." 
+                            autocomplete="off"
+                            spellcheck="false"
+                        >
+                        <button class="clear-btn" id="clearBtn">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <button id="fetchBtn" class="btn-primary">
+                        <i class="fas fa-magic"></i>
+                        <span>ANALYZE VIDEO</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+                
+                <div class="examples">
+                    <p class="examples-title"><i class="fas fa-lightbulb"></i> Contoh URL yang didukung:</p>
+                    <div class="example-links">
+                        <code>youtube.com/watch?v=dQw4w9WgXcQ</code>
+                        <code>youtu.be/dQw4w9WgXcQ</code>
+                        <code>youtube.com/shorts/abc123</code>
+                    </div>
+                </div>
+                
+                <div class="features">
+                    <div class="feature">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Semua resolusi: 144p hingga 4K</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Audio MP3 64kbps - 320kbps</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Tidak perlu install software</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Loading Animation -->
+            <div id="loading" class="card loading-card hidden">
+                <div class="loading-content">
+                    <div class="spinner">
+                        <div class="spinner-inner"></div>
+                    </div>
+                    <h3>Scanning YouTube Video...</h3>
+                    <p>Menganalisis metadata dan menyiapkan pilihan download</p>
+                    <div class="loading-steps">
+                        <div class="step active">
+                            <span class="step-number">1</span>
+                            <span class="step-text">Validasi URL</span>
+                        </div>
+                        <div class="step">
+                            <span class="step-number">2</span>
+                            <span class="step-text">Ekstrak metadata</span>
+                        </div>
+                        <div class="step">
+                            <span class="step-number">3</span>
+                            <span class="step-text">Generate link</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Results Section -->
+            <div id="results" class="hidden">
+                <!-- Video Info Card -->
+                <div class="card video-info-card">
+                    <div class="video-info-content">
+                        <div class="video-thumbnail">
+                            <img id="thumbnail" src="" alt="Video Thumbnail">
+                            <div class="thumbnail-overlay">
+                                <div class="duration" id="duration">0:00</div>
+                                <div class="play-btn">
+                                    <i class="fas fa-play"></i>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="video-details">
+                            <div class="video-header">
+                                <h2 id="videoTitle">Loading video title...</h2>
+                                <div class="video-id">
+                                    <i class="fas fa-hashtag"></i>
+                                    <span id="videoId">N/A</span>
+                                </div>
+                            </div>
+                            
+                            <div class="video-meta">
+                                <div class="meta-item">
+                                    <i class="fas fa-user"></i>
+                                    <span id="videoAuthor">YouTube Creator</span>
+                                </div>
+                                <div class="meta-item">
+                                    <i class="fas fa-clock"></i>
+                                    <span id="videoLength">0:00</span>
+                                </div>
+                                <div class="meta-item">
+                                    <i class="fas fa-layer-group"></i>
+                                    <span id="formatCount">0</span> format tersedia
+                                </div>
+                            </div>
+                            
+                            <div class="video-actions">
+                                <button class="btn-secondary" id="copyUrlBtn">
+                                    <i class="fas fa-copy"></i> Copy URL
+                                </button>
+                                <button class="btn-secondary" id="shareBtn">
+                                    <i class="fas fa-share"></i> Share
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tabs -->
+                <div class="tabs-container">
+                    <div class="tabs">
+                        <button class="tab-btn active" data-tab="video">
+                            <i class="fas fa-video"></i>
+                            <span>VIDEO FORMATS</span>
+                            <span class="tab-badge" id="videoCount">0</span>
+                        </button>
+                        <button class="tab-btn" data-tab="audio">
+                            <i class="fas fa-music"></i>
+                            <span>AUDIO FORMATS</span>
+                            <span class="tab-badge" id="audioCount">0</span>
+                        </button>
+                        <button class="tab-btn" data-tab="services">
+                            <i class="fas fa-external-link-alt"></i>
+                            <span>ONLINE SERVICES</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Video Formats -->
+                <div id="videoTab" class="tab-content active">
+                    <div class="formats-header">
+                        <h3><i class="fas fa-hd"></i> Pilih Resolusi Video</h3>
+                        <div class="quality-filters">
+                            <button class="filter-btn active" data-quality="all">Semua</button>
+                            <button class="filter-btn" data-quality="4K">4K</button>
+                            <button class="filter-btn" data-quality="1080p">1080p</button>
+                            <button class="filter-btn" data-quality="720p">720p</button>
+                            <button class="filter-btn" data-quality="480p">480p</button>
+                            <button class="filter-btn" data-quality="360p">360p</button>
+                        </div>
+                    </div>
+                    
+                    <div class="formats-grid" id="videoFormats"></div>
+                </div>
+
+                <!-- Audio Formats -->
+                <div id="audioTab" class="tab-content">
+                    <div class="formats-header">
+                        <h3><i class="fas fa-waveform"></i> Pilih Kualitas Audio</h3>
+                        <div class="quality-filters">
+                            <button class="filter-btn active" data-quality="all">Semua</button>
+                            <button class="filter-btn" data-quality="320kbps">320kbps</button>
+                            <button class="filter-btn" data-quality="192kbps">192kbps</button>
+                            <button class="filter-btn" data-quality="128kbps">128kbps</button>
+                        </div>
+                    </div>
+                    
+                    <div class="formats-grid" id="audioFormats"></div>
+                </div>
+
+                <!-- Online Services -->
+                <div id="servicesTab" class="tab-content">
+                    <div class="services-info">
+                        <h3><i class="fas fa-external-link-alt"></i> Download via Online Services</h3>
+                        <p>Jika download langsung tidak bekerja, gunakan service online berikut:</p>
+                    </div>
+                    
+                    <div class="services-grid" id="servicesList"></div>
+                </div>
+            </div>
+
+            <!-- Error Message -->
+            <div id="errorMessage" class="card error-card hidden">
+                <div class="error-content">
+                    <div class="error-icon">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <h3>Oops! Something went wrong</h3>
+                    <p id="errorText">Tidak bisa memproses video. Coba lagi dengan URL yang valid.</p>
+                    <button class="btn-secondary" id="retryBtn">
+                        <i class="fas fa-redo"></i> Try Again
+                    </button>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <i class="fas fa-bolt"></i>
+                        <span>VYT DOWNLOADER</span>
+                    </div>
+                    <p class="footer-tagline">For the Gen Z generation ✨</p>
+                </div>
+                
+                <div class="footer-links">
+                    <a href="#" class="footer-link">
+                        <i class="fas fa-question-circle"></i> FAQ
+                    </a>
+                    <a href="#" class="footer-link">
+                        <i class="fas fa-shield-alt"></i> Privacy
+                    </a>
+                    <a href="#" class="footer-link">
+                        <i class="fas fa-code"></i> API
+                    </a>
+                </div>
+                
+                <div class="footer-disclaimer">
+                    <p>
+                        <i class="fas fa-exclamation-triangle"></i>
+                        Untuk penggunaan pribadi. Hargai hak cipta creator.
+                    </p>
+                    <p class="copyright">
+                        © 2024 VYT DOWNLOADER • Made with <i class="fas fa-heart"></i> for Gen Z
+                    </p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast">
+        <div class="toast-content">
+            <i class="fas fa-check-circle" id="toastIcon"></i>
+            <span id="toastMessage">Berhasil!</span>
+        </div>
+        <div class="toast-progress"></div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>

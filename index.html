@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VYT DOWNLOADER | Free</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Righteous&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⬇️</text></svg>">
+</head>
+<body>
+    <!-- Noise Overlay -->
+    <div class="noise-overlay"></div>
+    
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <i class="fas fa-bolt"></i>
+                <h1>VYT DOWNLOADER</h1>
+            </div>
+            <p class="tagline">Download YouTube videos in style ✨</p>
+        </header>
+
+        <!-- Main Card -->
+        <main class="main-card">
+            <!-- Input Section -->
+            <div class="input-section">
+                <div class="input-group">
+                    <i class="fab fa-youtube"></i>
+                    <input 
+                        type="url" 
+                        id="urlInput" 
+                        placeholder="Paste link YouTube di sini..." 
+                        autocomplete="off"
+                    >
+                    <button id="fetchBtn" class="btn-primary">
+                        <i class="fas fa-search"></i> ANALYZE
+                    </button>
+                </div>
+                <p class="hint">
+                    <i class="fas fa-lightbulb"></i> 
+                    Support semua resolusi: 360p, 480p, 720p, 1080p, 4K & MP3
+                </p>
+            </div>
+
+            <!-- Loading Animation -->
+            <div id="loading" class="loading hidden">
+                <div class="spinner"></div>
+                <p>Scanning video... This might take a sec!</p>
+            </div>
+
+            <!-- Video Info Section -->
+            <div id="videoInfo" class="video-info hidden">
+                <div class="video-thumbnail">
+                    <img id="thumbnail" src="" alt="Thumbnail">
+                    <div class="video-duration" id="duration"></div>
+                </div>
+                <div class="video-details">
+                    <h2 id="videoTitle">Video Title</h2>
+                    <div class="video-meta">
+                        <span><i class="fas fa-clock"></i> <span id="length">0:00</span></span>
+                        <span><i class="fas fa-file"></i> <span id="formatCount">0</span> formats</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tabs -->
+            <div class="tabs hidden" id="tabs">
+                <button class="tab-btn active" data-tab="video">
+                    <i class="fas fa-video"></i> VIDEO
+                </button>
+                <button class="tab-btn" data-tab="audio">
+                    <i class="fas fa-music"></i> AUDIO
+                </button>
+            </div>
+
+            <!-- Video Formats Grid -->
+            <div id="videoFormats" class="formats-grid hidden">
+                <h3><i class="fas fa-hd"></i> Pilih Resolusi Video</h3>
+                <div class="quality-filters">
+                    <button class="filter-btn" data-quality="all">All</button>
+                    <button class="filter-btn" data-quality="4K">4K</button>
+                    <button class="filter-btn" data-quality="1080p">1080p</button>
+                    <button class="filter-btn" data-quality="720p">720p</button>
+                    <button class="filter-btn" data-quality="480p">480p</button>
+                </div>
+                <div class="cards-container" id="videoCards"></div>
+            </div>
+
+            <!-- Audio Formats Grid -->
+            <div id="audioFormats" class="formats-grid hidden">
+                <h3><i class="fas fa-waveform"></i> Pilih Kualitas Audio</h3>
+                <div class="cards-container" id="audioCards"></div>
+            </div>
+
+            <!-- Error Message -->
+            <div id="errorMessage" class="error-message hidden">
+                <i class="fas fa-exclamation-triangle"></i>
+                <p>Oops! Something went wrong. Try again with a valid YouTube URL.</p>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Made with <i class="fas fa-heart pulse"></i> Verucaa</p>
+            <p class="disclaimer">
+                <i class="fas fa-exclamation-circle"></i> 
+                Hargai hak cipta creator.
+            </p>
+        </footer>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast hidden">
+        <span id="toastMessage"></span>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
